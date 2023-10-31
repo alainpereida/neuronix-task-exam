@@ -7,6 +7,8 @@ public class UnitOfWork : IUnitOfWork
     private readonly DataContext _context;
     
     private AssignmentRepository _assignmentRepository;
+
+    private UserRepository _userRepository;
     
     public UnitOfWork(DataContext context)
     {
@@ -14,6 +16,7 @@ public class UnitOfWork : IUnitOfWork
     }
 
     public IAssignmentRepository Assignments => _assignmentRepository = _assignmentRepository ?? new AssignmentRepository(_context);
+    public IUserRepository Users => _userRepository = _userRepository ?? new UserRepository(_context);
     
     public void Dispose()
     {

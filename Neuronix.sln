@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuronix.Data", "Neuronix.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuronix.Services", "Neuronix.Services\Neuronix.Services.csproj", "{F477757E-09C6-47FA-AE38-AE111F223E38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuronix.Web", "Neuronix.Web\Neuronix.Web.csproj", "{0B9CFE32-7A3E-41DA-A159-4F2300A9B645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{F477757E-09C6-47FA-AE38-AE111F223E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F477757E-09C6-47FA-AE38-AE111F223E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F477757E-09C6-47FA-AE38-AE111F223E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9CFE32-7A3E-41DA-A159-4F2300A9B645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9CFE32-7A3E-41DA-A159-4F2300A9B645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9CFE32-7A3E-41DA-A159-4F2300A9B645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9CFE32-7A3E-41DA-A159-4F2300A9B645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
