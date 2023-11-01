@@ -1,5 +1,9 @@
 ## Neuronix Task Web for ASP.NET Core
 
+## Environment configuration
+
+This instructions you can find in the file ```ClientApp/README.md```
+
 ## Starting the Application
 
 For run the app we have appsettings.Local.json to configurte the app. In the file ```Properties->launchSettings.json``` you need to change the environment variable ```ASPNETCORE_ENVIRONMENT``` to ```Development``` to get the file appsettings.
