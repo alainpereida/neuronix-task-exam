@@ -6,7 +6,7 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
+        <h1>Tu camino hacia la productividad sin esfuerzo!</h1>
         <p>Bienvenido a tu nueva aplicación favorita para organizar tus tareas, estas son las funcionalidades que podras explorar:</p>
         <ul>
             <li>Agregar Tarea</li>

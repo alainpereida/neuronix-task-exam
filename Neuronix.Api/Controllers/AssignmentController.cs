@@ -47,12 +47,12 @@ public class AssignmentController : ControllerBase
     }
     
     /// <summary>
-    /// Crear una nueva tarea para el usuario
+    /// Crear una nueva tarea para el usuario y la agrega a la lista con un valor de no completada como default
     /// </summary>
     /// <param name="assignmentCreateDto"></param>
     /// <returns></returns>
     [HttpPost("")]
-    public async Task<ActionResult<Assignment>> CreateeAssignmentStatus([FromBody] AssignmentCreateDto assignmentCreateDto)
+    public async Task<ActionResult<Assignment>> CreateAssignment([FromBody] AssignmentCreateDto assignmentCreateDto)
     {
         BaseErrorResponse result = new BaseErrorResponse();
         List<string> err = new List<string>();
@@ -81,8 +81,8 @@ public class AssignmentController : ControllerBase
     /// <param name="id"></param>
     /// <param name="valueStatus"></param>
     /// <returns></returns>
-    [HttpPatch("{id}/ChangeStatus")]
-    public async Task<ActionResult<IEnumerable<Assignment>>> UpdateAssignmentStatus(int id, [FromQuery] bool isCompleted)
+    [HttpPatch("{id}/Change-Status")]
+    public async Task<ActionResult<IEnumerable<Assignment>>> UpdateAssignment(int id, [FromQuery] bool isCompleted)
     {
         BaseErrorResponse result = new BaseErrorResponse();
         List<string> err = new List<string>();
@@ -113,12 +113,12 @@ public class AssignmentController : ControllerBase
     }
     
     /// <summary>
-    /// Eliminar una tarea.
+    /// Eliminar una tarea de la lista de tareas del usuario
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpDelete("{id}")]
-    public async Task<ActionResult> UpdateAssignmentStatus(int id)
+    public async Task<ActionResult> DeleteAssignmen(int id)
     {
         BaseErrorResponse result = new BaseErrorResponse();
         List<string> err = new List<string>();

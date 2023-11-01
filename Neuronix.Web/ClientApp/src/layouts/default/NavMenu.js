@@ -1,47 +1,63 @@
-import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import React, {useEffect, useState} from 'react';
+import {Button, Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { getToken, destroyToken } from "../../api/jwt.service";
 import '../../assets/NavMenu.css';
+import { useNavigate  } from 'react-router-dom'
 
-export class NavMenu extends Component {
-  static displayName = NavMenu.name;
-
-  constructor (props) {
-    super(props);
-
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true
-    };
+const NavMenu = () => {
+  const navigate = useNavigate();
+  const [collapsed, setcollapsed] = useState(false);
+  const [token, setToken] = useState(null);
+  
+  const toggleNavbar = () => {
+    setcollapsed(!collapsed);
   }
-
-  toggleNavbar () {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
+  
+  const logout = () => {
+    destroyToken();
+    setToken(null)
+    navigate('/login');
+    window.location.reload();
   }
+  
+  useEffect(() => {
+    if (getToken()) {
+      setToken(getToken());
+    }
+  },[token])
 
-  render() {
-    return (
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-          <NavbarBrand tag={Link} to="/">TaskFlow: Tu camino hacia la productividad sin esfuerzo.</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-            <ul className="navbar-nav flex-grow">
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/login">Iniciar sesión</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/assignments">Mis tareas</NavLink>
-              </NavItem>
-            </ul>
-          </Collapse>
-        </Navbar>
-      </header>
-    );
-  }
+  return (
+    <header>
+      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
+        <NavbarBrand tag={Link} to="/">TaskFlow</NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={collapsed} navbar>
+          <ul className="navbar-nav flex-grow">
+            <NavItem>
+              <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+            </NavItem>
+            {
+              token ? (
+                <>
+                  <NavItem>
+                    <NavLink tag={Link} className="text-dark" to="/assignments">Mis tareas</NavLink>
+                  </NavItem>
+                  <Button onClick={logout}>
+                    Cerrar Sesión
+                  </Button>
+                </>
+              ) : (
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/login">Iniciar sesión</NavLink>
+                </NavItem>
+              )
+            }
+          </ul>
+        </Collapse>
+      </Navbar>
+    </header>
+  );
 }
+
+export default NavMenu;
