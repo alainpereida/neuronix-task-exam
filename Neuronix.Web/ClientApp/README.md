@@ -2,7 +2,7 @@
 
 ## Environment configuration
 
-To configure the development environment for the salt-api, follow these steps:
+To configure the development environment for the web, follow these steps:
 
 - Download and install Node js.
 - Download and install the .Net SDK.
